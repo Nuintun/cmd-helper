@@ -1,3 +1,4 @@
-/*! define a */
+/*! block a */
 
 a { color: red }
+/*! endblock a */

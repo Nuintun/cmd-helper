@@ -1,1 +1,3 @@
-/*! define a */@import url(b);@import "c";/*! import d */body { color: red }/*! block e *//*! import f */a { color: black }/*! endblock */
+/*! block a */
+/*! import b *//*! import c *//*! import d */body { color: red }/*! block e *//*! import f */a { color: black }/*! endblock e */
+/*! endblock a */

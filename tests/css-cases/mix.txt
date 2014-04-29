@@ -1,4 +1,4 @@
-@import url('a')
+/*! import a */
 a {
     color: red
 }
@@ -12,6 +12,6 @@ c { color: red }
 
 /*! block d */
 d { color: red }
-/*! endblock */
+/*! endblock d */
 
-/*! endblock */
+/*! endblock c */
