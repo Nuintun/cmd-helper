@@ -1,21 +1,18 @@
 # Cmd-Helper
+==========
 
-Utilities for common module definition modify from cmd-util
+>Utilities for common module definition modify from cmd-util
 
----------------------------
+>[![Build Status](https://travis-ci.org/Nuintun/cmd-helper.svg?branch=master)](https://travis-ci.org/Nuintun/cmd-helper)
+>[![Coverage Status](https://coveralls.io/repos/Nuintun/cmd-helper/badge.png)](https://coveralls.io/r/Nuintun/cmd-helper)
 
-This package is designed for developers, if you are a user, don't read this.
-
-[![Build Status](https://travis-ci.org/nuintun/cmd-helper.png?branch=master)](https://travis-ci.org/nuintun/cmd-helper)
-[![Coverage Status](https://coveralls.io/repos/Nuintun/cmd-helper/badge.png)](https://coveralls.io/r/Nuintun/cmd-helper)
-
-## Implements
+### Implements
 
 - **ast**: parse cmd javascript code, do whatever you want.
 - **css**: css parser
 - **iduri**: solutions for id and uri.
 
-## Install
+### Install
 
 ```
 $ npm install cmd-helper
