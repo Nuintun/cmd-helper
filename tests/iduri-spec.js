@@ -96,11 +96,9 @@ describe('iduri.extname', function (){
     it('can find ext', function (){
         iduri.extname('a/b/c').should.equal('.js');
         iduri.extname('a/b/c.css').should.equal('.css');
-        iduri.extname('a/b/c.tpl').should.equal('.js');
-        iduri.addFileExt('tpl');
         iduri.extname('a/b/c.tpl').should.equal('.tpl');
-        iduri.removeFileExt('tpl');
-
+        iduri.extname('a/b/c.tpl#').should.equal('.tpl');
+        iduri.extname('a/b/c.tpl?timestamp=1398775190746').should.equal('.tpl');
     });
 });
 
@@ -108,6 +106,8 @@ describe('iduri.appendext', function (){
     it('can append ext', function (){
         iduri.appendext('a/b').should.equal('a/b.js');
         iduri.appendext('a/b.css').should.equal('a/b.css');
+        iduri.appendext('a/b.tpl#').should.equal('a/b.tpl#');
+        iduri.appendext('a/b.tpl?timestamp=1398775190746').should.equal('a/b.tpl?timestamp=1398775190746');
     });
 });
 
@@ -171,6 +171,7 @@ describe('iduri.parseAlias', function (){
             }
         }, 'jquery').should.equal('gallery/jquery/1.7.2/jquery');
     });
+
     it('should generate id from relative path', function (){
         iduri.parseAlias({
             alias: {
@@ -178,16 +179,8 @@ describe('iduri.parseAlias', function (){
             }
         }, './events.js').should.equal('./events');
     });
+
     it('is not an alias', function (){
         iduri.parseAlias({}, 'hello').should.equal('hello');
-    });
-});
-
-describe('iduri.validateFormat', function (){
-    it('should be a valid format', function (){
-        iduri.validateFormat('{{family}}/{{ name}}/{{version }}/{{  filename  }}').should.equal(true);
-    });
-    it('should be a invalid format', function (){
-        iduri.validateFormat('{{family}}/{{version }}/{{{ name}}/{  filename  }}').should.equal(false);
     });
 });

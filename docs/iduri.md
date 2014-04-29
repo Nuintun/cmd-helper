@@ -69,15 +69,15 @@ iduri.absolute('arale/widget/1.0.0/daparser', './base')
 
 ## iduri.join(base, uri)
 
-The same as `path.join`.
+The same as `path.join`, but dir separators use '/' only.
 
 ## iduri.dirname(uri)
 
-The same as `path.dirname`.
+The same as `path.dirname`, but dir separators use '/' only.
 
 ## iduri.basename(uri)
 
-The same as `path.basename`.
+The same as `path.basename`, but dir separators use '/' only.
 
 ## iduri.extname(uri)
 
@@ -104,10 +104,6 @@ Generate id from package with the format. Default format is:
 ```
 '{{ family }}/{{ name }}/{{ version }}/{{ filename }}'
 ```
-
-## iduri.validateFormat(format)
-
-Detect if the format is the default format.
 
 ## iduri.addFileExt(ext)
 
