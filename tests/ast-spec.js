@@ -1,62 +1,67 @@
-var should = require('should');
-var ast = require('./coveralls')('../lib/ast');
+var should = require('should'),
+    ast = require('./coveralls')('../lib/ast');
 
 describe('ast.parse', function (){
     it('has id, but no dependencies', function (){
         var code = [
-            "define('id', function(require, exports, module) {",
-            "  var jquery = require('jquery-ui');",
-            "  var moment = require('moment');",
-            "})"
-        ].join('\n');
-        var parsed = ast.parseFirst(code);
+                "define('id', function(require, exports, module) {",
+                "  var jquery = require('jquery-ui');",
+                "  var moment = require('moment');",
+                "})"
+            ].join('\n'),
+            parsed = ast.parseFirst(code);
+
         parsed.id.should.equal('id');
         parsed.dependencies.should.have.length(2);
     });
 
     it('find ./a as dependency', function (){
         var code = [
-            "define('id', ['./a'], function(require, exports, module) {",
-            "  var jquery = require('jquery');",
-            "})"
-        ].join('\n');
-        var parsed = ast.parse(code)[0];
+                "define('id', ['./a'], function(require, exports, module) {",
+                "  var jquery = require('jquery');",
+                "})"
+            ].join('\n'),
+            parsed = ast.parse(code)[0];
+
         parsed.id.should.equal('id');
         parsed.dependencies.should.includeEql('./a');
     });
 
     it('find b as dependency', function (){
         var code = [
-            "define(['b'], function(require, exports, module) {",
-            "  var jquery = require('jquery');",
-            "})"
-        ].join('\n');
-        var parsed = ast.parse(code)[0];
+                "define(['b'], function(require, exports, module) {",
+                "  var jquery = require('jquery');",
+                "})"
+            ].join('\n'),
+            parsed = ast.parse(code)[0];
+
         parsed.dependencies.should.includeEql('b');
     });
 
     it('find a, b as dependencies', function (){
         var code = [
-            "define('id', ['a', 'b'], function(require, exports, module) {",
-            "  var jquery = require('jquery');",
-            "})"
-        ].join('\n');
-        var parsed = ast.parse(code)[0];
+                "define('id', ['a', 'b'], function(require, exports, module) {",
+                "  var jquery = require('jquery');",
+                "})"
+            ].join('\n'),
+            parsed = ast.parse(code)[0];
+
         parsed.id.should.equal('id');
         parsed.dependencies.should.eql(['a', 'b']);
     });
 
     it('find both two define dependencies', function (){
-        var code = [
-            "define('id', ['a', 'b'], function(require, exports, module) {",
-            "  var jquery = require('jquery');",
-            "})",
-            "define('id2', ['c', 'd'], function(require, exports, module) {",
-            "})"
-        ].join('\n');
-        var parsed = ast.parse(code);
+        var deps = [],
+            code = [
+                "define('id', ['a', 'b'], function(require, exports, module) {",
+                "  var jquery = require('jquery');",
+                "})",
+                "define('id2', ['c', 'd'], function(require, exports, module) {",
+                "})"
+            ].join('\n'),
+            parsed = ast.parse(code);
+
         parsed.should.have.length(2);
-        var deps = [];
         parsed.forEach(function (ret){
             ret.dependencies.forEach(function (dep){
                 deps.push(dep);
@@ -67,19 +72,21 @@ describe('ast.parse', function (){
 
     it('should not find the define in define', function (){
         var code = [
-            "define('id', ['a', 'b'], function(require, exports, module) {",
-            "  var jquery = require('jquery');",
-            "  define('id2', ['c', 'd'], function(require, exports, module) {",
-            "  })",
-            "})"
-        ].join('\n');
-        var parsed = ast.parse(code)[0];
+                "define('id', ['a', 'b'], function(require, exports, module) {",
+                "  var jquery = require('jquery');",
+                "  define('id2', ['c', 'd'], function(require, exports, module) {",
+                "  })",
+                "})"
+            ].join('\n'),
+            parsed = ast.parse(code)[0];
+
         parsed.id.should.equal('id');
         parsed.dependencies.should.eql(['a', 'b']);
     });
 
     it('should have factory {}', function (){
         var parsed = ast.parse('define({})')[0];
+
         should.exists(parsed.factory);
     });
 
@@ -89,6 +96,7 @@ describe('ast.parse', function (){
             "  var jquery = require('jquery');",
             "})"
         ].join('\n');
+
         ast.parseFirst(code).dependencies.should.includeEql('jquery');
     });
 
@@ -98,6 +106,7 @@ describe('ast.parse', function (){
             "  var jquery = module.require('jquery');",
             "})"
         ].join('\n');
+
         ast.parseFirst(code).dependencies.should.have.length(0);
 
         code = [
@@ -105,16 +114,18 @@ describe('ast.parse', function (){
             "  require.async('jquery');",
             "})"
         ].join('\n');
+
         ast.parseFirst(code).dependencies.should.have.length(0);
     });
 
     it('can find excutable dependency', function (){
         var code = [
-            "define(function(require, exports, module) {",
-            "  require('foo')('bar');",
-            "})"
-        ].join('\n');
-        var parsed = ast.parseFirst(code);
+                "define(function(require, exports, module) {",
+                "  require('foo')('bar');",
+                "})"
+            ].join('\n'),
+            parsed = ast.parseFirst(code);
+
         parsed.dependencies.should.eql(['foo']);
     });
 
@@ -127,6 +138,7 @@ describe('ast.parse', function (){
             "  });",
             "})();"
         ].join('\n');
+
         ast.parseFirst(code).id.should.equal('jquery');
     });
 
@@ -136,6 +148,7 @@ describe('ast.parse', function (){
             "  require('jquery');",
             "})"
         ].join('\n');
+
         ast.parseFirst(code).dependencies.should.eql(['jquery']);
     });
 });
@@ -148,6 +161,7 @@ describe('ast.modify', function (){
             "  var underscore = require('underscore');",
             "})"
         ].join('\n');
+
         code = ast.modify(code, {require: {jquery: '$'}});
         code = code.print_to_string();
         code.should.include('require("$")');
@@ -161,6 +175,7 @@ describe('ast.modify', function (){
             "  var undersocre = require('undersocre');",
             "})"
         ].join('\n');
+
         code = ast.modify(code, {require: function (v){
             if (v === 'jquery') return '$';
             if (v === 'undersocre') return '_';
@@ -172,8 +187,9 @@ describe('ast.modify', function (){
 
     it('can replace id', function (){
         var code = "define({})";
+
         ast.modify(code, {
-            id: 'id',
+            id: 'id'
         }).
             print_to_string({beautify: true}).
             should.equal('define("id", [], {});');
@@ -188,6 +204,7 @@ describe('ast.modify', function (){
 
     it('can replace dependencies', function (){
         var code = "define({})";
+
         ast.modify(code, {dependencies: 'a'}).
             print_to_string({beautify: true}).
             should.equal('define([ "a" ], {});');
@@ -198,6 +215,7 @@ describe('ast.modify', function (){
 
     it('can replace dependencies with object', function (){
         var code = 'define(["a", "b"], {})';
+
         ast.modify(code, {dependencies: {a: 'arale'}}).
             print_to_string({beautify: true}).
             should.equal('define([ "arale", "b" ], {});');
@@ -205,6 +223,7 @@ describe('ast.modify', function (){
 
     it('replace id and dependencies via function', function (){
         var code = "define({})";
+
         code = ast.modify(code, {id: 'id', dependencies: ['a']});
         code = code.print_to_string({beautify: true});
         code.should.equal('define("id", [ "a" ], {});');
@@ -212,6 +231,7 @@ describe('ast.modify', function (){
 
     it('should be debug id', function (){
         var code = "define('id', [], {})";
+
         ast.modify(code, function (v){
             return v + '-debug';
         }).
@@ -241,6 +261,7 @@ describe('ast.modify', function (){
 
     it('can delete dependencies', function (){
         var code = "define('id', ['jquery', 'b'], {})";
+
         code = ast.modify(code, function (v){
             if (v === 'jquery') return null;
             return v;
@@ -249,11 +270,11 @@ describe('ast.modify', function (){
     });
 
     it('should have id-debug, jquery-debug', function (){
-        var code = "define('id', [], function(require){ require('jquery') })";
+        var code = "define('id', [], function(require){ require('jquery') })",
+            data = ast.modify(code, function (v){
+                return v + '-debug';
+            });
 
-        var data = ast.modify(code, function (v){
-            return v + '-debug';
-        });
         data = data.print_to_string();
         data.should.include('id-debug');
         data.should.include('jquery-debug');
@@ -268,6 +289,7 @@ describe('ast.modify', function (){
             "  });",
             "})();"
         ].join('\n');
+
         code = ast.modify(code, function (v){ return 'jquery-debug'; });
         code = code.print_to_string({beautify: true});
         code.should.include('(function()');
@@ -276,21 +298,22 @@ describe('ast.modify', function (){
 
     it('can modify async', function (){
         var code = [
-            "define(function(require, exports, module) {",
-            "  require.async('jquery');",
-            "  require.async('foo', function(foo){});",
-            "  require.async(['jquery', 'foo']);",
-            "  require.async(['jquery', 'foo'], function($, foo){});",
-            "});"
-        ].join('\n');
-        var data = ast.modify(code, {async: function (value){
-            if (value === 'jquery') {
-                return '$';
-            }
-            if (value === 'foo') {
-                return 'app/foo';
-            }
-        }}).print_to_string();
+                "define(function(require, exports, module) {",
+                "  require.async('jquery');",
+                "  require.async('foo', function(foo){});",
+                "  require.async(['jquery', 'foo']);",
+                "  require.async(['jquery', 'foo'], function($, foo){});",
+                "});"
+            ].join('\n'),
+            data = ast.modify(code, {async: function (value){
+                if (value === 'jquery') {
+                    return '$';
+                }
+                if (value === 'foo') {
+                    return 'app/foo';
+                }
+            }}).print_to_string();
+
         data.should.include('require.async("$")');
         data.should.include('require.async("app/foo",function(foo){})');
         data.should.include('require.async(["$","app/foo"]');

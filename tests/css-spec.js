@@ -1,11 +1,11 @@
-var fs = require('fs');
-var read = function (filepath){
-    return fs.readFileSync(filepath, 'utf8');
-};
+var fs = require('fs'),
+    path = require('path'),
+    should = require('should'),
+    css = require('./coveralls')('../lib/css');
 
-var path = require('path');
-var should = require('should');
-var css = require('./coveralls')('../lib/css');
+function read(filepath){
+    return fs.readFileSync(filepath, 'utf8');
+}
 
 describe('css.parse', function (){
     fs.readdirSync(__dirname + '/css-cases').forEach(function (file){
