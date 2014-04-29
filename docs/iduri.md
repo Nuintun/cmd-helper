@@ -66,18 +66,21 @@ iduri.absolute('arale/widget/1.0.0/daparser', './base')
 
 // => arale/base/1.0.0/base
 ```
+## iduri.unixPath(uri)
+
+return the path like unix.
 
 ## iduri.join(base, uri)
 
-The same as `path.join`, but dir separators use '/' only.
+The same as `path.join`, but dir separators use unix mode.
 
 ## iduri.dirname(uri)
 
-The same as `path.dirname`, but dir separators use '/' only.
+The same as `path.dirname`, but dir separators use unix mode.
 
 ## iduri.basename(uri)
 
-The same as `path.basename`, but dir separators use '/' only.
+The same as `path.basename`, but dir separators use unix mode.
 
 ## iduri.extname(uri)
 
