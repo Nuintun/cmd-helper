@@ -17,3 +17,13 @@
 ```
 $ npm install cmd-helper
 ```
+
+### Introduction
+···js
+var cmd = require('cmd-helper'),
+    ast = cmd.ast,
+    css = cmd.css,
+    iduri = cmd.iduri;
+
+// TODO something, see the documentation for detailed usage !
+```
