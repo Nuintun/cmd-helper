@@ -26,5 +26,7 @@ var cmd = require('cmd-helper'),
     css = cmd.css,
     iduri = cmd.iduri;
 
-// TODO something, see the documentation for detailed usage !
+// see the documentation for detailed usage !
+iduri.addFileExt('tpl');
+css.parse('body { color: block; }');
 ```
