@@ -1,23 +1,35 @@
 [
-    {
-        "type": "block",
-        "code": [
-            {
-                "id": "a",
-                "type": "import"
-            },
-            {
-                "id": "b",
-                "type": "import"
-            },
-            {
-                "id": "c",
-                "type": "import"
-            },
-            {
-                "id": "d",
-                "type": "import"
-            }
-        ]
-    }
+  {
+    "type": "block",
+    "code": [
+      {
+        "id": "a",
+        "type": "import"
+      },
+      {
+        "type": "string",
+        "code": "\n"
+      },
+      {
+        "id": "b",
+        "type": "import"
+      },
+      {
+        "type": "string",
+        "code": "\n"
+      },
+      {
+        "id": "c",
+        "type": "import"
+      },
+      {
+        "type": "string",
+        "code": "\n"
+      },
+      {
+        "id": "d",
+        "type": "import"
+      }
+    ]
+  }
 ]

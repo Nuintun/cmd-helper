@@ -1,12 +1,17 @@
-/*! import a */
-a {color: red}
+@import url('a')
+a {
+    color: red
+}
+
 /*! import b */
-b {color: red}
+
+b { color: red }
 
 /*! block c */
-c {color: red}
+c { color: red }
 
 /*! block d */
-d {color: red}
-/*! endblock d */
-/*! endblock c */
+d { color: red }
+/*! endblock */
+
+/*! endblock */

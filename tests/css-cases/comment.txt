@@ -1,5 +1,5 @@
-/*! block a */
-a {color: red}
+/*! define a */
+
+a { color: red }
 
 /* hello world */
-/*! endblock a */
