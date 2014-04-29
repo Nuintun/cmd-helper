@@ -1,5 +1,5 @@
 var should = require('should');
-var ast = require('./_require')('../lib/ast');
+var ast = require('./coveralls')('../lib/ast');
 
 describe('ast.parse', function (){
     it('has id, but no dependencies', function (){

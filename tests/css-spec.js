@@ -5,7 +5,7 @@ var read = function (filepath){
 
 var path = require('path');
 var should = require('should');
-var css = require('./_require')('../lib/css');
+var css = require('./coveralls')('../lib/css');
 
 describe('css.parse', function (){
     fs.readdirSync(__dirname + '/css-cases').forEach(function (file){
