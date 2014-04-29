@@ -108,3 +108,11 @@ Generate id from package with the format. Default format is:
 ## iduri.validateFormat(format)
 
 Detect if the format is the default format.
+
+## iduri.addFileExt(ext)
+
+add file extension support.
+
+## iduri.removeFileExt(ext)
+
+remove file extension support.

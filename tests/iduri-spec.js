@@ -96,6 +96,11 @@ describe('iduri.extname', function (){
     it('can find ext', function (){
         iduri.extname('a/b/c').should.equal('.js');
         iduri.extname('a/b/c.css').should.equal('.css');
+        iduri.extname('a/b/c.tpl').should.equal('.js');
+        iduri.addFileExt('tpl');
+        iduri.extname('a/b/c.tpl').should.equal('.tpl');
+        iduri.removeFileExt('tpl');
+
     });
 });
 
