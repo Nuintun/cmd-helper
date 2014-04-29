@@ -12,29 +12,24 @@ describe('css.parse', function (){
         if (!/\.css/.test(file)) return;
         file = path.basename(file, '.css');
         it('should parse ' + file, function (){
-            var code = read(path.join(__dirname, 'css-cases', file + '.css'));
-            var ret = css.parse(code);
-            var json = read(path.join(__dirname, 'css-cases', file + '.json'));
-            JSON.stringify(ret, null, 2).should.equal(json.trim());
+            var code = read(path.join(__dirname, 'css-cases', file + '.css')),
+                json = JSON.parse(read(path.join(__dirname, 'css-cases', file + '.json'))),
+                ret = css.parse(code);
+
+            should.deepEqual(ret, json);
         });
     });
 
     it('should throw block not finished', function (){
         (function (){
-            var code = [
-                '/*! block a */'
-            ].join('\n');
+            var code = '/*! block a */';
             css.parse(code);
         }).should.throwError('block not finished.');
     });
 
     it('should throw block indent error', function (){
         (function (){
-            var code = [
-                '/*! block a */',
-                '/*! endblock */',
-                '/*! endblock a*/'
-            ].join('\n');
+            var code = '/*! block a *//*! endblock *//*! endblock a*/';
             css.parse(code);
         }).should.throwError('block indent error.');
     });
@@ -42,25 +37,29 @@ describe('css.parse', function (){
 
 describe('css.walk', function (){
     it('can stop the walk', function (){
-        var data = read(path.join(__dirname, 'css-cases', 'block.css'));
-        var ret = css.parse(data);
-        var count = 0;
+        var count = 0,
+            data = read(path.join(__dirname, 'css-cases', 'block.css')),
+            ret = css.parse(data);
+
         css.walk(ret, function (node, p){
             if (node.id === 'b') {
                 return false;
             }
             count++;
         });
-        count.should.equal(4);
+
+        count.should.equal(5);
     });
 
     it('can walk through', function (){
-        var data = read(path.join(__dirname, 'css-cases', 'block.css'));
-        var count = 0;
+        var count = 0,
+            data = read(path.join(__dirname, 'css-cases', 'block.css'));
+
         css.walk(data, function (node){
             count++;
         });
-        count.should.equal(9);
+
+        count.should.equal(10);
     });
 });
 
@@ -68,18 +67,24 @@ describe('css.stringify', function (){
     fs.readdirSync(__dirname + '/css-cases').forEach(function (file){
         if (!/\.txt/.test(file)) return;
         file = path.basename(file, '.txt');
+
         it('should stringify ' + file, function (){
-            var code = read(path.join(__dirname, 'css-cases', file + '.css'));
-            var ret = css.stringify(css.parse(code));
-            var txt = read(path.join(__dirname, 'css-cases', file + '.txt'));
-            ret.should.equal(txt.trim());
+            var code = read(path.join(__dirname, 'css-cases', file + '.css')),
+                txt = read(path.join(__dirname, 'css-cases', file + '.txt'));
+
+            code = css.stringify(css.parse(code));
+
+            code.should.equal(txt.trim());
         });
     });
 
     it('can stringify with filter', function (){
-        var code = read(path.join(__dirname, 'css-cases', 'block.css'));
+        var ret, code = read(path.join(__dirname, 'css-cases', 'block.css')),
+            expected = 'body { color: red }\n\n/*! block a/b/c */\na { color: black }\n/*! endblock a/b/c */';
+
         code = css.parse(code);
-        var ret = css.stringify(code, function (node){
+
+        ret = css.stringify(code, function (node){
             if (node.id === 'b') {
                 return false;
             }
@@ -88,14 +93,8 @@ describe('css.stringify', function (){
                 return node;
             }
         });
-        var expected = [
-            'body {color: red}',
-            '',
-            '/*! block a/b/c */',
-            'a {color: black}',
-            '/*! endblock a/b/c */'
-        ].join('\n');
-        ret.should.equal(expected);
+
+        ret.trim().should.equal(expected);
     });
 
     it('stringify nothing', function (){
