@@ -5,6 +5,7 @@
 
 >[![Build Status](https://travis-ci.org/Nuintun/cmd-helper.svg?branch=master)](https://travis-ci.org/Nuintun/cmd-helper)
 >[![Coverage Status](https://coveralls.io/repos/Nuintun/cmd-helper/badge.png)](https://coveralls.io/r/Nuintun/cmd-helper)
+>[![NPM version](https://badge.fury.io/js/cmd-helper.png)](https://www.npmjs.org/package/cmd-helper)
 
 ### Implements
 
