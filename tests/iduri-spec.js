@@ -50,27 +50,42 @@ describe('iduri.resolve', function (){
 describe('iduri.normalize', function (){
     it('return a/c', function (){
         iduri.normalize('a//b/../c').should.equal('a/c');
+        iduri.normalize('a/b#').should.equal('a/b');
+        iduri.normalize('a/b?timestamp=1398775190746').should.equal('a/b');
     });
 });
 
 describe('iduri.relative', function (){
     it('does not parse absolute uri', function (){
         iduri.relative('a/b', '/c').should.equal('/c');
+        iduri.relative('a/b#', '/c').should.equal('/c');
+        iduri.relative('a/b?timestamp=1398775190746', '/c').should.equal('/c');
     });
+
     it('return relative uri', function (){
         iduri.relative('a', 'c').should.equal('c');
+        iduri.relative('a#', 'c').should.equal('c');
+        iduri.relative('a?timestamp=1398775190746', 'c').should.equal('c');
         iduri.relative('a/b', 'c/d').should.equal('../c/d');
+        iduri.relative('a/b#', 'c/d').should.equal('../c/d');
+        iduri.relative('a/b?timestamp=1398775190746', 'c/d').should.equal('../c/d');
     });
 });
 
 describe('iduri.absolute', function (){
     it('only absolute relative uri', function (){
         iduri.absolute('a', 'b').should.equal('b');
+        iduri.absolute('a#', 'b').should.equal('b');
+        iduri.absolute('a?timestamp=1398775190746', 'b').should.equal('b');
     });
 
     it('absolute relative uri', function (){
         iduri.absolute('arale/base/1.0.0/parser', './base').should.equal('arale/base/1.0.0/base');
+        iduri.absolute('arale/base/1.0.0/parser#', './base').should.equal('arale/base/1.0.0/base');
+        iduri.absolute('arale/base/1.0.0/parser?timestamp=1398775190746', './base').should.equal('arale/base/1.0.0/base');
         iduri.absolute('a//b', './c').should.equal('a/c');
+        iduri.absolute('a//b#', './c').should.equal('a/c');
+        iduri.absolute('a//b?timestamp=1398775190746', './c').should.equal('a/c');
     });
 });
 
@@ -106,8 +121,23 @@ describe('iduri.appendext', function (){
     it('can append ext', function (){
         iduri.appendext('a/b').should.equal('a/b.js');
         iduri.appendext('a/b.css').should.equal('a/b.css');
+        iduri.appendext('a/b.tpl').should.equal('a/b.tpl.js');
         iduri.appendext('a/b.tpl#').should.equal('a/b.tpl#');
         iduri.appendext('a/b.tpl?timestamp=1398775190746').should.equal('a/b.tpl?timestamp=1398775190746');
+    });
+});
+
+describe('iduri.addFileExt', function (){
+    it('can add file ext', function (){
+        iduri.addFileExt('tpl');
+        iduri.appendext('a/b.tpl').should.equal('a/b.tpl');
+    });
+});
+
+describe('iduri.removeFileExt', function (){
+    it('can remove file ext', function (){
+        iduri.removeFileExt('tpl');
+        iduri.appendext('a/b.tpl').should.equal('a/b.tpl.js');
     });
 });
 
