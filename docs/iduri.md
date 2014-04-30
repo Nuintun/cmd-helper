@@ -69,7 +69,11 @@ iduri.realpath('a/b/c?v=1398775190746')
 ```
 
 ## iduri.relative(base, uri)
+```js
+iduri.relative('a/b', 'c/d')
 
+// => ../c/d
+```
 
 ## iduri.absolute(base, uri)
 
@@ -80,9 +84,6 @@ iduri.absolute('arale/widget/1.0.0/daparser', './base')
 
 // => arale/base/1.0.0/base
 ```
-## iduri.unixPath(uri)
-
-return the path like unix.
 
 ## iduri.join(base, uri)
 
