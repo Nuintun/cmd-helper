@@ -54,6 +54,20 @@ iduri.normalize('a//b/../c')
 // => a/c
 ```
 
+## iduri.realpath(uri)
+
+Get the real file path.
+
+```js
+iduri.realpath('a/b/c#')
+
+// => a/b/c
+
+iduri.realpath('a/b/c?v=1398775190746')
+
+// => a/b/c
+```
+
 ## iduri.relative(base, uri)
 
 
@@ -72,15 +86,15 @@ return the path like unix.
 
 ## iduri.join(base, uri)
 
-The same as `path.join`, but dir separators use unix mode.
+The same as `path.join`, but dir separators use posix mode.
 
 ## iduri.dirname(uri)
 
-The same as `path.dirname`, but dir separators use unix mode.
+The same as `path.dirname`, but dir separators use posix mode.
 
 ## iduri.basename(uri)
 
-The same as `path.basename`, but dir separators use unix mode.
+The same as `path.basename`, but dir separators use posix mode.
 
 ## iduri.extname(uri)
 

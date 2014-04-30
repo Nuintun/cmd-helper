@@ -50,8 +50,13 @@ describe('iduri.resolve', function (){
 describe('iduri.normalize', function (){
     it('return a/c', function (){
         iduri.normalize('a//b/../c').should.equal('a/c');
-        iduri.normalize('a/b#').should.equal('a/b');
-        iduri.normalize('a/b?timestamp=1398775190746').should.equal('a/b');
+    });
+});
+
+describe('iduri.realpath', function (){
+    it('return a/c', function (){
+        iduri.realpath('a/c#').should.equal('a/c');
+        iduri.realpath('a/c?v=1398775190746').should.equal('a/c');
     });
 });
 
@@ -76,22 +81,25 @@ describe('iduri.absolute', function (){
     it('only absolute relative uri', function (){
         iduri.absolute('a', 'b').should.equal('b');
         iduri.absolute('a#', 'b').should.equal('b');
-        iduri.absolute('a?timestamp=1398775190746', 'b').should.equal('b');
+        iduri.absolute('a?v=1398775190746', 'b').should.equal('b');
+        iduri.absolute('./a', 'b').should.equal('b');
+        iduri.absolute('./a#', 'b').should.equal('b');
+        iduri.absolute('./a?v=1398775190746', 'b').should.equal('b');
     });
 
     it('absolute relative uri', function (){
         iduri.absolute('arale/base/1.0.0/parser', './base').should.equal('arale/base/1.0.0/base');
         iduri.absolute('arale/base/1.0.0/parser#', './base').should.equal('arale/base/1.0.0/base');
-        iduri.absolute('arale/base/1.0.0/parser?timestamp=1398775190746', './base').should.equal('arale/base/1.0.0/base');
+        iduri.absolute('arale/base/1.0.0/parser?v=1398775190746', './base').should.equal('arale/base/1.0.0/base');
         iduri.absolute('a//b', './c').should.equal('a/c');
         iduri.absolute('a//b#', './c').should.equal('a/c');
-        iduri.absolute('a//b?timestamp=1398775190746', './c').should.equal('a/c');
-    });
-});
-
-describe('iduri.join', function (){
-    it('can join uri', function (){
-        iduri.join('a', 'b').should.equal('a/b');
+        iduri.absolute('a//b?v=1398775190746', './c').should.equal('a/c');
+        iduri.absolute('./a', './c').should.equal('./c');
+        iduri.absolute('./a#', './c').should.equal('./c');
+        iduri.absolute('./a?v=1398775190746', './c').should.equal('./c');
+        iduri.absolute('./a//b', './c').should.equal('./a/c');
+        iduri.absolute('./a//b#', './c').should.equal('./a/c');
+        iduri.absolute('./a//b?v=1398775190746', './c').should.equal('./a/c');
     });
 });
 
