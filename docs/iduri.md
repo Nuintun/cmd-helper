@@ -93,7 +93,7 @@ The same as `path.join`, but dir separators use posix mode.
 
 The same as `path.dirname`, but dir separators use posix mode.
 
-## iduri.basename(uri)
+## iduri.basename(uri, ext)
 
 The same as `path.basename`, but dir separators use posix mode.
 
