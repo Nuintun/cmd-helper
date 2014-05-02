@@ -68,12 +68,17 @@ describe('iduri.relative', function (){
     });
 
     it('return relative uri', function (){
-        iduri.relative('a', 'c').should.equal('c');
-        iduri.relative('a#', 'c').should.equal('c');
-        iduri.relative('a?timestamp=1398775190746', 'c').should.equal('c');
+        iduri.relative('a', 'c').should.equal('./c');
+        iduri.relative('a#', 'c').should.equal('./c');
+        iduri.relative('a?timestamp=1398775190746', 'c').should.equal('./c');
         iduri.relative('a/b', 'c/d').should.equal('../c/d');
+        iduri.relative('a/b', './d').should.equal('./d');
         iduri.relative('a/b#', 'c/d').should.equal('../c/d');
         iduri.relative('a/b?timestamp=1398775190746', 'c/d').should.equal('../c/d');
+        iduri.relative('path/to/a', 'path/to/b').should.equal('./b');
+        iduri.relative('path/to/a', 'path/b').should.equal('../b');
+        iduri.relative('path/to/a', 'path/b#').should.equal('../b#');
+        iduri.relative('path/to/a', 'path/b?v=1398775190746').should.equal('../b?v=1398775190746');
     });
 });
 
