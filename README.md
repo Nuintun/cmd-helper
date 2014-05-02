@@ -11,7 +11,7 @@ Cmd-Helper
 ### Implements
 
 - **ast**: parse cmd javascript code, do whatever you want.
-- **css**: css parser
+- **css**: css parser.
 - **iduri**: solutions for id and uri.
 
 ### Install
