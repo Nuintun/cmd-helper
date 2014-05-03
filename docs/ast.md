@@ -1,6 +1,6 @@
 # ast
 
-- pubdate: 2013-01-29
+- Pubdate: 2013-01-29
 
 The AST of javascript.
 
@@ -39,7 +39,6 @@ The result should be:
 ```js
 {id: null, dependencies: ['jquery'], factory: factoryNode}
 ```
-
 
 ## ast.parse(code)
 

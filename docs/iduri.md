@@ -1,6 +1,6 @@
 # iduri
 
-- pubdate: 2013-03-16
+- Pubdate: 2013-03-16
 
 -----
 
@@ -125,8 +125,8 @@ Generate id from package with the format. Default format is:
 
 ## iduri.addFileExt(ext)
 
-add file extension support.
+Add file extension support.
 
 ## iduri.removeFileExt(ext)
 
-remove file extension support.
+Remove file extension support.
