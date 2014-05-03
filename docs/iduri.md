@@ -101,7 +101,7 @@ The same as `path.basename`, but dir separators use posix mode.
 
 The same as `path.extname`.
 
-However, if no extname is found, it will return `.js`.
+However, if uri is not dir and no extname is found, it will return `.js`, else if uri is dir will return ''.
 
 ## iduri.appendext(uri)
 
