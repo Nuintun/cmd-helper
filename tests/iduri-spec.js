@@ -94,6 +94,7 @@ describe('iduri.relative', function (){
         iduri.relative('a/b/', 'd?v=1398775190746').should.equal('../../d?v=1398775190746');
         iduri.relative('/a/b', 'c/d').should.equal('../c/d');
         iduri.relative('../a/b', 'c/d').should.equal('../../c/d');
+        iduri.relative('../../a/b', 'c/d').should.equal('../../../c/d');
     });
 });
 
