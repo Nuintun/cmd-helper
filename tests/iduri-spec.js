@@ -10,7 +10,7 @@ describe('iduri.resolve', function (){
     });
 
     it('is invalid', function (){
-        meta = iduri.resolve('aBcD@0.1.5');
+        meta = iduri.resolve('arale/@0.1.5');
         should.not.exist(meta);
     });
 
@@ -37,7 +37,7 @@ describe('iduri.resolve', function (){
     it('has family: arale', function (){
         // git type
         meta = iduri.resolve('arale');
-        meta.family.should.equal('arale');
+        meta.family.should.equal('');
 
         meta = iduri.resolve('arale/base');
         meta.family.should.equal('arale');
