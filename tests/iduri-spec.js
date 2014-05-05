@@ -50,6 +50,7 @@ describe('iduri.resolve', function (){
 describe('iduri.normalize', function (){
     it('return a/c', function (){
         iduri.normalize('a//b/../c').should.equal('a/c');
+        iduri.normalize('a//b/../../c').should.equal('c');
     });
 });
 
@@ -95,6 +96,7 @@ describe('iduri.relative', function (){
         iduri.relative('/a/b', 'c/d').should.equal('../../c/d');
         iduri.relative('../a/b', 'c/d').should.equal('../../c/d');
         iduri.relative('../../a/b', 'c/d').should.equal('../../../c/d');
+        iduri.relative('../../a/../b', 'c/d').should.equal('../../c/d');
     });
 });
 
