@@ -10,7 +10,6 @@ The css parser
 var css = require('cmd-util').css
 ```
 
-
 ## css.parse(code)
 
 When a css data is parsed, it will return a data structure like:
