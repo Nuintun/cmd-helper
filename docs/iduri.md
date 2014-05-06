@@ -109,18 +109,18 @@ If uri has no extname, append `.js` to it.
 
 ## iduri.parseAlias(pkg, name)
 
-Find `name` in `pkg.spm.alias`.
+Find `name` in `pkg.alias`.
 
 ## iduri.isAlias(pkg, name)
 
 If the name is an alias.
 
-## iduri.idFromPackage(pkg, filename, format)
+## iduri.idFromPackage(pkg, format)
 
 Generate id from package with the format. Default format is:
 
 ```
-'{{ family }}/{{ name }}/{{ version }}/{{ filename }}'
+{{ family }}/{{ name }}/{{ version }}/{{ filename }}
 ```
 
 ## iduri.addFileExt(ext)
