@@ -213,8 +213,8 @@ describe('iduri.idFromPackage', function (){
             family: 'arale',
             name: 'base',
             version: '1.0.0',
-            filename: 'class.js'
-        }, './event.js').should.equal('./event');
+            filename: './event.js'
+        }).should.equal('./event');
     });
 
     it('should generate id without a filename', function (){
@@ -222,7 +222,7 @@ describe('iduri.idFromPackage', function (){
             family: 'arale',
             name: 'base',
             version: '1.0.0'
-        }, '').should.equal('arale/base/1.0.0/');
+        }).should.equal('arale/base/1.0.0');
     });
 });
 
