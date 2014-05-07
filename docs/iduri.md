@@ -85,7 +85,7 @@ iduri.absolute('arale/widget/1.0.0/daparser', './base')
 // => arale/base/1.0.0/base
 ```
 
-## iduri.join(base, uri)
+## iduri.join(path1 [,path2 [,...]])
 
 The same as `path.join`, but dir separators use posix mode.
 
