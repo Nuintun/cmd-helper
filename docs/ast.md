@@ -7,7 +7,7 @@ The AST of javascript.
 -----
 
 ```js
-var ast = require('cmd-util').ast
+var ast = require('cmd-helper').ast
 ```
 
 ## ast.parseFirst(code)

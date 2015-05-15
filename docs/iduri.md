@@ -5,7 +5,7 @@
 -----
 
 ```js
-var iduri = require('cmd-util').iduri
+var iduri = require('cmd-helper').iduri
 ```
 
 ## iduri.resovle(uri)

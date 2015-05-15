@@ -7,7 +7,7 @@ The css parser
 -----
 
 ```js
-var css = require('cmd-util').css
+var css = require('cmd-helper').css
 ```
 
 ## css.parse(code)
