@@ -28,7 +28,7 @@
     "url": "https://github.com/nuintun/cmd-helper.git"
   },
   "dependencies": {
-    "uglify-js": "^2.4.21"
+    "uglify-js": "^2.4.23"
   },
   "devDependencies": {
     "jshint": "^2.7.0",
