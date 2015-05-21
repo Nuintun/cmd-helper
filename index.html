@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Cmd-helper by nuintun</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/nuintun/cmd-helper">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/nuintun/cmd-helper/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/nuintun/cmd-helper/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Cmd-helper</h1>
+          <p>Utilities for common module definition modify from cmd-util</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/nuintun">nuintun</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="cmd-helper" class="anchor" href="#cmd-helper" aria-hidden="true"><span class="octicon octicon-link"></span></a>cmd-helper</h1>
+
+<blockquote>
+<p>Utilities for common module definition modify from cmd-util</p>
+
+<p><a href="https://www.npmjs.org/package/cmd-helper"><img src="http://img.shields.io/npm/v/cmd-helper.svg?style=flat-square" alt="NPM Version"></a>
+<a href="https://www.npmjs.org/package/cmd-helper"><img src="http://img.shields.io/npm/dm/cmd-helper.svg?style=flat-square" alt="Download Status"></a>
+<a href="https://travis-ci.org/nuintun/cmd-helper"><img src="http://img.shields.io/travis/nuintun/cmd-helper.svg?style=flat-square" alt="Travis Status"></a>
+<a href="https://coveralls.io/r/nuintun/cmd-helper?branch=master"><img src="http://img.shields.io/coveralls/nuintun/cmd-helper/master.svg?style=flat-square" alt="Test Coverage"></a>
+<a href="https://david-dm.org/nuintun/cmd-helper"><img src="http://img.shields.io/david/nuintun/cmd-helper.svg?style=flat-square" alt="Dependencies"></a></p>
+</blockquote>
+
+<h3>
+<a id="implements" class="anchor" href="#implements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implements</h3>
+
+<ul>
+<li>
+<strong>ast</strong>: parse cmd javascript code, do whatever you want.</li>
+<li>
+<strong>css</strong>: css parser.</li>
+<li>
+<strong>iduri</strong>: solutions for id and uri.</li>
+</ul>
+
+<h3>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h3>
+
+<pre><code>$ npm install cmd-helper
+</code></pre>
+
+<h3>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h3>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> cmd <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>cmd-helper<span class="pl-pds">'</span></span>),
+  ast <span class="pl-k">=</span> cmd.ast,
+  css <span class="pl-k">=</span> cmd.css,
+  iduri <span class="pl-k">=</span> cmd.iduri;
+
+<span class="pl-c">// see the documentation for detailed usage !</span>
+iduri.addFileExt(<span class="pl-s"><span class="pl-pds">'</span>tpl<span class="pl-pds">'</span></span>);
+css.<span class="pl-c1">parse</span>(<span class="pl-s"><span class="pl-pds">'</span>body { color: block; }<span class="pl-pds">'</span></span>);</pre></div>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
