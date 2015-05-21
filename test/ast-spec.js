@@ -24,7 +24,7 @@ describe('ast.parse', function (){
       parsed = ast.parse(code)[0];
 
     parsed.id.should.equal('id');
-    parsed.dependencies.should.exist('./a');
+    parsed.dependencies.should.containEql('./a');
   });
 
   it('find b as dependency', function (){
@@ -35,7 +35,7 @@ describe('ast.parse', function (){
       ].join('\n'),
       parsed = ast.parse(code)[0];
 
-    parsed.dependencies.should.exist('b');
+    parsed.dependencies.should.containEql('b');
   });
 
   it('find a, b as dependencies', function (){
@@ -97,7 +97,7 @@ describe('ast.parse', function (){
       "})"
     ].join('\n');
 
-    ast.parseFirst(code).dependencies.should.exist('jquery');
+    ast.parseFirst(code).dependencies.should.containEql('jquery');
   });
 
   it('find nothing as dependency', function (){
@@ -164,8 +164,8 @@ describe('ast.modify', function (){
 
     code = ast.modify(code, { require: { jquery: '$' } });
     code = code.print_to_string();
-    code.should.include('require("$")');
-    code.should.include('require("underscore")');
+    code.should.containEql('require("$")');
+    code.should.containEql('require("underscore")');
   });
 
   it('can replace require with function', function (){
@@ -183,8 +183,8 @@ describe('ast.modify', function (){
       }
     });
     code = code.print_to_string();
-    code.should.include('require("$")');
-    code.should.include('require("_")');
+    code.should.containEql('require("$")');
+    code.should.containEql('require("_")');
   });
 
   it('can replace id', function (){
@@ -240,7 +240,7 @@ describe('ast.modify', function (){
       return v + '-debug';
     }).
       print_to_string().
-      should.include('id-debug');
+      should.containEql('id-debug');
   });
 
   it('should be debug require', function (){
@@ -250,7 +250,7 @@ describe('ast.modify', function (){
       return v + '-debug';
     }).
       print_to_string().
-      should.include('jquery-debug');
+      should.containEql('jquery-debug');
   });
 
   it('should be debug dependencies', function (){
@@ -260,7 +260,7 @@ describe('ast.modify', function (){
       return v + '-debug';
     }).
       print_to_string().
-      should.include('jquery-debug');
+      should.containEql('jquery-debug');
   });
 
   it('can delete dependencies', function (){
@@ -270,7 +270,7 @@ describe('ast.modify', function (){
       if (v === 'jquery') return null;
       return v;
     }).print_to_string();
-    code.should.not.include('jquery');
+    code.should.not.containEql('jquery');
   });
 
   it('should have id-debug, jquery-debug', function (){
@@ -280,8 +280,8 @@ describe('ast.modify', function (){
       });
 
     data = data.print_to_string();
-    data.should.include('id-debug');
-    data.should.include('jquery-debug');
+    data.should.containEql('id-debug');
+    data.should.containEql('jquery-debug');
   });
 
   it('can modify AMD', function (){
@@ -296,8 +296,8 @@ describe('ast.modify', function (){
 
     code = ast.modify(code, function (v){ return 'jquery-debug'; });
     code = code.print_to_string({ beautify: true });
-    code.should.include('(function()');
-    code.should.include('jquery-debug');
+    code.should.containEql('(function()');
+    code.should.containEql('jquery-debug');
   });
 
   it('can modify async', function (){
@@ -320,17 +320,17 @@ describe('ast.modify', function (){
         }
       }).print_to_string();
 
-    data.should.include('require.async("$")');
-    data.should.include('require.async("app/foo",function(foo){})');
-    data.should.include('require.async(["$","app/foo"]');
-    data.should.include('require.async(["$","app/foo"],function($,foo){})');
+    data.should.containEql('require.async("$")');
+    data.should.containEql('require.async("app/foo",function(foo){})');
+    data.should.containEql('require.async(["$","app/foo"]');
+    data.should.containEql('require.async(["$","app/foo"],function($,foo){})');
 
     data = ast.modify(code, {
       async: { 'jquery': '$', 'foo': 'app/foo' }
     }).print_to_string();
-    data.should.include('require.async("$")');
-    data.should.include('require.async("app/foo",function(foo){})');
-    data.should.include('require.async(["$","app/foo"]');
-    data.should.include('require.async(["$","app/foo"],function($,foo){})');
+    data.should.containEql('require.async("$")');
+    data.should.containEql('require.async("app/foo",function(foo){})');
+    data.should.containEql('require.async(["$","app/foo"]');
+    data.should.containEql('require.async(["$","app/foo"],function($,foo){})');
   });
 });
