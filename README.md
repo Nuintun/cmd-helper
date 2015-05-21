@@ -3,10 +3,10 @@ Cmd-Helper
 
 >Utilities for common module definition modify from cmd-util
 
->[![Build Status](https://travis-ci.org/Nuintun/cmd-helper.svg?branch=master)](https://travis-ci.org/Nuintun/cmd-helper)
->[![Coverage Status](https://coveralls.io/repos/Nuintun/cmd-helper/badge.png)](https://coveralls.io/r/Nuintun/cmd-helper)
+>[![Build Status](https://travis-ci.org/nuintun/cmd-helper.svg?branch=master)](https://travis-ci.org/nuintun/cmd-helper)
+>[![Coverage Status](https://coveralls.io/repos/nuintun/cmd-helper/badge.png)](https://coveralls.io/r/nuintun/cmd-helper)
 >[![NPM version](https://badge.fury.io/js/cmd-helper.png)](https://www.npmjs.org/package/cmd-helper)
->[![Dependency Status](https://david-dm.org/Nuintun/cmd-helper.png)](https://david-dm.org/Nuintun/cmd-helper)
+>[![Dependency Status](https://david-dm.org/nuintun/cmd-helper.png)](https://david-dm.org/nuintun/cmd-helper)
 
 ### Implements
 
