@@ -1,5 +1,4 @@
 body { color: red }
-
 /*! block a */
 a { color: black }
 /*! endblock a */

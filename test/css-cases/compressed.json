@@ -4,12 +4,24 @@
     "type": "block",
     "code": [
       {
+        "type": "string",
+        "code": "\n"
+      },
+      {
         "id": "b",
         "type": "import"
       },
       {
+        "type": "string",
+        "code": "\n"
+      },
+      {
         "id": "c",
         "type": "import"
+      },
+      {
+        "type": "string",
+        "code": "\n"
       },
       {
         "id": "d",
@@ -17,7 +29,7 @@
       },
       {
         "type": "string",
-        "code": "body { color: red }"
+        "code": "\nbody { color: red }\n"
       },
       {
         "id": "e",
@@ -29,7 +41,7 @@
           },
           {
             "type": "string",
-            "code": "a { color: black }"
+            "code": "\na { color: black }\n"
           }
         ]
       }

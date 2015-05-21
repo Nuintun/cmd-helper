@@ -8,7 +8,7 @@
       },
       {
         "type": "string",
-        "code": "\na {\n    color: red\n}\n\n"
+        "code": " a\n{\n  color: red\n}\n\n"
       },
       {
         "id": "b",
@@ -16,7 +16,7 @@
       },
       {
         "type": "string",
-        "code": "\n\nb { color: red }\n\n"
+        "code": "\n\nb { color: red }\n"
       },
       {
         "id": "c",
@@ -24,7 +24,7 @@
         "code": [
           {
             "type": "string",
-            "code": "\nc { color: red }\n\n"
+            "code": "\nc { color: red }\n"
           },
           {
             "id": "d",

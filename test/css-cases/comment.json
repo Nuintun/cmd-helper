@@ -5,7 +5,7 @@
     "code": [
       {
         "type": "string",
-        "code": "\n\na { color: red }\n\n/* hello world */"
+        "code": "\n\na { color: red }\n/* hello world */"
       }
     ]
   }

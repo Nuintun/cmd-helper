@@ -4,7 +4,7 @@
     "code": [
       {
         "type": "string",
-        "code": "body { color: red }\n\n"
+        "code": "body { color: red }\n"
       },
       {
         "id": "a",

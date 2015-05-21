@@ -80,7 +80,7 @@ describe('css.stringify', function (){
 
   it('can stringify with filter', function (){
     var ret, code = read(path.join(__dirname, 'css-cases', 'block.css')),
-      expected = 'body { color: red }\n\n/*! block a/b/c */\na { color: black }\n/*! endblock a/b/c */';
+      expected = 'body { color: red }\n/*! block a/b/c */\na { color: black }\n/*! endblock a/b/c */';
 
     code = css.parse(code);
 
