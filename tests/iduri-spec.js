@@ -1,5 +1,5 @@
 var should = require('should'),
-    iduri = require('./coveralls')('../lib/iduri');
+    iduri = require('../lib/iduri');
 
 describe('iduri.resolve', function (){
     var meta;

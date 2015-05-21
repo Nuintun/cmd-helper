@@ -1,7 +1,7 @@
 var fs = require('fs'),
     path = require('path'),
     should = require('should'),
-    css = require('./coveralls')('../lib/css');
+    css = require('../lib/css');
 
 function read(filepath){
     return fs.readFileSync(filepath, 'utf8');
