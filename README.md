@@ -1,12 +1,13 @@
-Cmd-Helper
+cmd-helper
 ==========
 
 >Utilities for common module definition modify from cmd-util
 
->[![Build Status](https://travis-ci.org/nuintun/cmd-helper.svg?branch=master)](https://travis-ci.org/nuintun/cmd-helper)
->[![Coverage Status](https://coveralls.io/repos/nuintun/cmd-helper/badge.png)](https://coveralls.io/r/nuintun/cmd-helper)
->[![NPM version](https://badge.fury.io/js/cmd-helper.png)](https://www.npmjs.org/package/cmd-helper)
->[![Dependency Status](https://david-dm.org/nuintun/cmd-helper.png)](https://david-dm.org/nuintun/cmd-helper)
+>[![NPM Version][npm-image]][npm-url]
+>[![Download Status][download-image]][npm-url]
+>[![Travis Status][travis-image]][travis-url]
+>[![Test Coverage][coveralls-image]][coveralls-url]
+>[![Dependencies][david-image]][david-url]
 
 ### Implements
 
@@ -24,11 +25,21 @@ $ npm install cmd-helper
 
 ```js
 var cmd = require('cmd-helper'),
-    ast = cmd.ast,
-    css = cmd.css,
-    iduri = cmd.iduri;
+  ast = cmd.ast,
+  css = cmd.css,
+  iduri = cmd.iduri;
 
 // see the documentation for detailed usage !
 iduri.addFileExt('tpl');
 css.parse('body { color: block; }');
 ```
+
+[travis-image]: http://img.shields.io/travis/nuintun/cmd-helper.svg?style=flat-square
+[travis-url]: https://travis-ci.org/nuintun/cmd-helper
+[coveralls-image]: http://img.shields.io/coveralls/nuintun/cmd-helper/master.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/nuintun/cmd-helper?branch=master
+[david-image]: http://img.shields.io/david/nuintun/cmd-helper.svg?style=flat-square
+[david-url]: https://david-dm.org/nuintun/cmd-helper
+[npm-image]: http://img.shields.io/npm/v/cmd-helper.svg?style=flat-square
+[npm-url]: https://www.npmjs.org/package/cmd-helper
+[download-image]: http://img.shields.io/npm/dm/cmd-helper.svg?style=flat-square
